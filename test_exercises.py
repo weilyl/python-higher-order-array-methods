@@ -56,5 +56,16 @@ class TestRunningTotal(unittest.TestCase):
         self.assertEqual(running_total([]), [])
 
 
+class TestSwap(unittest.TestCase):
+
+    def test_single_character(self):
+        self.assertEqual(swap('a'), 'a')
+    
+    def test_one_word_upper_first_character(self):
+        self.assertEqual(swap('Abcde'), 'ebcdA')
+    
+    def test_sentence_mixed_casing(self):
+        self.assertEqual(swap('Oh what a wonderful day it is'), 'hO thaw a londerfuw yad ti si')
+
 if __name__ == "__main__":
     unittest.main()

@@ -34,6 +34,7 @@ def running_total(input_list: list) -> list:
     return output_list
 
 def swap(sentence: str) -> str:
+    
     return NotImplemented
 
 def word_sizes(input_sentence: str) -> dict:
