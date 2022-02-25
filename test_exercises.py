@@ -40,5 +40,21 @@ class TestIsNotRealPalindrome(unittest.TestCase):
         self.assertFalse(is_real_palindrome("123ab321"))
 
 
+class TestRunningTotal(unittest.TestCase):
+    print("Testing running total...")
+
+    def test_multiples_passing_case(self):
+        self.assertEqual(running_total([2, 5, 13]), [2, 7, 20])
+
+    def test_multiples_failing_case(self):
+        self.assertEqual(running_total([14, 11, 7, 15, 20]), [14, 25, 32, 47, 67])
+
+    def test_single_item(self):
+        self.assertEqual(running_total([3]), [3])
+
+    def test_empty_list(self):
+        self.assertEqual(running_total([]), [])
+
+
 if __name__ == "__main__":
     unittest.main()

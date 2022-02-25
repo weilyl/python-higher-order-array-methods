@@ -1,6 +1,6 @@
-import re
 
 def is_real_palindrome(potential_palindrome: str) -> bool:
+    import re
     """
     Checks if a string is a palindrome regardless of casing, whitespace and punctuation.
 
@@ -18,8 +18,23 @@ def is_real_palindrome(potential_palindrome: str) -> bool:
     return potential_palindrome_alpha.endswith(reversed_first_half)
 
 
-def running_total(input_arr: list) -> int:
-    return NotImplemented
+def running_total(input_list: list) -> list:
+    from functools import reduce
+    from operator import add
+
+    def reducer(list_of_ints):
+        return reduce(add, list_of_ints)
+
+    output_list = []
+    list_of_indices = list(range(len(input_list)))
+
+    for i in list_of_indices:
+        accumulator = output_list[i-1] if i > 0 else 0
+        curr_sum = accumulator + input_list[i]
+        output_list.append(curr_sum)
+        # reducer(input_list[0:i+1])
+
+    return output_list
 
 def swap(sentence: str) -> str:
     return NotImplemented
@@ -61,4 +76,4 @@ def friday_the_13ths(year: int) -> int:
     return NotImplemented
 
 if __name__ == "__main__":
-  is_real_palindrome("Madam__, I'm Adam")
+    running_total([2, 5, 13])
