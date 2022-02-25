@@ -19,20 +19,17 @@ def is_real_palindrome(potential_palindrome: str) -> bool:
 
 
 def running_total(input_list: list) -> list:
-    from functools import reduce
-    from operator import add
-
-    def reducer(list_of_ints):
-        return reduce(add, list_of_ints)
 
     output_list = []
     list_of_indices = list(range(len(input_list)))
 
     for i in list_of_indices:
+        # Point to current total and use as accumulator
         accumulator = output_list[i-1] if i > 0 else 0
+        # Point to current item and add to accumulator
         curr_sum = accumulator + input_list[i]
+        # Push new total to output list
         output_list.append(curr_sum)
-        # reducer(input_list[0:i+1])
 
     return output_list
 
