@@ -35,12 +35,14 @@ def running_total(input_list: list) -> list:
 
 def swap(sentence: str) -> str:
     import re
+
     """
     Swaps the first and last letter of each word in a sentence
     Does not account for punctuation
     :param sentence: STR input sentence
     :return: STR output sentence with swapped letters
     """
+
     # If sentence contains one letter, simply return
     if len(sentence) == 1:
         return sentence
@@ -54,10 +56,11 @@ def swap(sentence: str) -> str:
 
         new_word = word
 
-        # If word is longer than one letter, split word into portions
+        # If word is longer than one letter, split word into segments
         if len(word) > 1:
             curr_first_letter, middle_of_word, curr_last_letter = word[0], word[1:-1], word[-1]
 
+            # Replace word variable with reordered string segments
             new_word = curr_last_letter + middle_of_word + curr_first_letter 
 
         # Add spaces in if the word is not the last in the input sentence
