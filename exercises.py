@@ -35,10 +35,15 @@ def running_total(input_list: list) -> list:
 
 def swap(sentence: str) -> str:
     import re
-
+    """
+    Swaps the first and last letter of each word in a sentence.
+    Does not account for punctuation.
+    :param sentence: STR input sentence
+    :return: STR output sentence with swapped letters
+    """
     if len(sentence) == 1:
         return sentence
-  
+
     swapped_sentence = ''
     words_list = re.findall('[a-z]+', sentence, re.IGNORECASE)
 
