@@ -34,8 +34,27 @@ def running_total(input_list: list) -> list:
     return output_list
 
 def swap(sentence: str) -> str:
-    
-    return NotImplemented
+    import re
+
+    if len(sentence) == 1:
+        return sentence
+  
+    swapped_sentence = ''
+    words_list = re.findall('[a-z]+', sentence, re.IGNORECASE)
+
+    for index, word in enumerate(words_list):
+
+        new_word = word
+
+        if len(word) > 1:
+            curr_first_letter, middle_of_word, curr_last_letter = word[0], word[1:-1], word[-1]
+
+            new_word = curr_last_letter + middle_of_word + curr_first_letter 
+
+        new_word += ' ' if index < len(words_list)-1 else ''
+        swapped_sentence += new_word
+
+    return swapped_sentence
 
 def word_sizes(input_sentence: str) -> dict:
     return NotImplemented
