@@ -35,7 +35,7 @@ def running_total(input_list: list) -> list:
 
 def swap(sentence: str) -> str:
     import re
-
+    
     """
     Swaps the first and last letter of each word in a sentence
     Does not account for punctuation
@@ -49,26 +49,38 @@ def swap(sentence: str) -> str:
 
     # Initialize variable for output sentence
     swapped_sentence = ''
-    # Make an array of all "words" (continuous letters) in input string
+    # Make a list of all "words" (continuous letters) in input string
     words_list = re.findall('[a-z]+', sentence, re.IGNORECASE)
+    # Make a list of all whitespace in input string to zip with words later
+    whitespace_list = re.findall('\s+', sentence)
 
-    for index, word in enumerate(words_list):
+    new_words_list = map(swap_letter_in_word, words_list)
+    new_sentence_list = zip(new_words_list, whitespace_list)
+    
+     
 
-        new_word = word
+def swap_letter_in_word(word: str) -> str:
+    import re
 
-        # If word is longer than one letter, split word into segments
-        if len(word) > 1:
-            curr_first_letter, middle_of_word, curr_last_letter = word[0], word[1:-1], word[-1]
+    """
+    Swaps the first and last letter of each word in a sentence
+    Does not account for punctuation
+    :param word: STR input word
+    :return: STR output word with swapped letters
+    """
+    new_word = word
 
-            # Replace word variable with reordered string segments
-            new_word = curr_last_letter + middle_of_word + curr_first_letter 
+    # If word is longer than one letter, split word into segments
+    if len(word) > 1:
+        curr_first_letter, middle_of_word, curr_last_letter = word[0], word[1:-1], word[-1]
 
-        # Add spaces in if the word is not the last in the input sentence
-        new_word += ' ' if index < len(words_list)-1 else ''
-        # Concatenate the swapped word to the output string
-        swapped_sentence += new_word
+        # Replace word variable with reordered string segments
+        new_word = curr_last_letter + middle_of_word + curr_first_letter 
 
-    return swapped_sentence
+    # Add spaces in if the word is not the last in the input sentence
+    new_word += ' ' if index < len(words_list)-1 else ''
+    return new_word
+
 
 def word_sizes(input_sentence: str) -> dict:
     return NotImplemented
